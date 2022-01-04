@@ -44,12 +44,12 @@ CREATE TABLE IF NOT EXISTS resorts(
 INSERT INTO cruises
 (destination, price, tours, startDate)
 VALUES
-("Hawaii", 800, 2, "2022-12-03");
+("LA", 1000, 3, "2022-12-03");
 
 INSERT INTO resorts
 (name, price, cruiseIncluded)
 VALUES
-("Big Ol' Resort", 1400, true);
+("Nice Resort", 1900, true);
 
 
 INSERT INTO tours

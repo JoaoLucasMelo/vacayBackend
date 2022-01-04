@@ -23,5 +23,10 @@ namespace vacayBackend.Services
     {
       return _repo.GetToursByCruise(id);
     }
+
+    internal Tour Create(Tour newTour)
+    {
+      return _repo.Create(newTour);
+    }
   }
 }

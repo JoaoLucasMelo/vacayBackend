@@ -1,4 +1,7 @@
+using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using vacayBackend.Models;
 using vacayBackend.Services;
 
 namespace vacayBackend.Controllers
@@ -14,6 +17,19 @@ namespace vacayBackend.Controllers
       _ts = ts;
     }
 
+    [HttpPost]
+    public ActionResult<Tour> Create([FromBody] Tour newTour)
+    {
+      try
+      {
+        Tour tour = _ts.Create(newTour);
+        return Ok(tour);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 
   }
 }

@@ -16,6 +16,19 @@ namespace vacayBackend.Repositories
       _db = db;
     }
 
+    internal Tour Create(Tour newTour)
+    {
+      string sql = @"
+      INSERT INTO tours
+      (city, duration, price, cruiseId, resortId)
+      VALUES
+      (@City, @Duration, @Price, @CruiseId, @ResortId);
+      SELECT LAST_INSERT_ID()
+      ;";
+      int id = _db.ExecuteScalar<int>(sql, newTour);
+      newTour.Id = id;
+      return newTour;
+    }
     internal List<TourViewModel> GetToursByResort(int id)
     {
       string sql = @"
@@ -35,6 +48,7 @@ namespace vacayBackend.Repositories
         return tvm;
       }, new { id }).ToList();
     }
+
 
     internal List<TourViewModel> GetToursByCruise(int id)
     {
